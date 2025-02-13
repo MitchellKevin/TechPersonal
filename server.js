@@ -4,6 +4,7 @@ const app = express();
 const port= 8000;
 const file= path.resolve(__dirname, 'index.html');
 
+app.use('/static', express.static('static'));
 app.set('view engine', 'ejs');
 app.set('views', 'view')
 app.get('/', onhome)
