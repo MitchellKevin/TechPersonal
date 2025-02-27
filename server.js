@@ -1,4 +1,5 @@
 const dotenv= require('dotenv');
+const { name } = require('ejs');
 dotenv.config();
 const express= require('express');
 const path= require('path');
@@ -12,6 +13,11 @@ app.set('views', 'view')
 app.get('/', onhome)
 app.get('/about', about)
 app.get('/movie', movie)
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+app.get('/user', nieuwe_gebruiker)
 app.listen(port, () => {
     console.log('Server is running on port 8000');
 });
@@ -34,10 +40,13 @@ app.listen(port, () => {
 
 // connect();
 
+// function nieuwe_gebruiker(req, res) {
+//     res.render('user.ejs');
+// }
 app.post(
-    '/movie', 
+    '/user', 
     async (req, res) => {
-    console.log(req.body);
+    nieuwe_gebruiker(req, res);
 });
 
 function onhome(req, res) {
@@ -57,3 +66,12 @@ function about(req, res) {
     res.sendFile(file);
 }
 
+
+
+function nieuwe_gebruiker(req, res) {
+    let user={
+        name: req.body.name,
+        surname: req.body.surname,
+    }
+    res.render('user.ejs', {data: user})
+}

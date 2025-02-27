@@ -9,5 +9,14 @@
 <body>
     <h1><%=data.title%></h1>
     <p><%= data.description %></p>
+
+    <form action="/user" method="post">
+        <p><input type="text" name="name" placeholder="Naam"></p>
+        <p>
+            <textarea name="surname" placeholder="Achternaam"></textarea>
+        </p>
+        <p>
+            <input type="submit">
+        </p>
 </body>
 </html>
