@@ -60,30 +60,6 @@ app.post('/user', async (req, res) => {
     }
 });
 
-// const {MongoClient}= require('mongodb');
-// const uri= process.env.URI;
-// const db_name= process.env.DB_NAME;
-
-// const client= new MongoClient(uri);
-// const database= client.db(db_name);
-
-// async function connect() {
-// try {
-//     await client.connect();
-//     console.log('Connected to the database');
-// } catch (error) {
-//     console.log('Error connecting to the database');
-// }
-// }
-
-// connect();
-
-
-// app.post(
-//     '/user', 
-//     async (req, res) => {
-//     nieuwe_gebruiker(req, res);
-// });
 
 function onhome(req, res) {
     res.render('movie', {title: 'Movie', year: 2021});
